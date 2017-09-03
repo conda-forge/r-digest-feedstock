@@ -7,7 +7,13 @@ Package license: GPL-2.0
 
 Feedstock license: BSD 3-Clause
 
-Summary: Implementation of a function 'digest()' for the creation  of hash digests of arbitrary R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash' and 'murmurhash' algorithms) permitting easy comparison of R language objects, as well as a function 'hmac()' to create hash-based message authentication code. Please note that this package is not meant to be deployed for cryptographic purposes for which more comprehensive (and widely tested) libraries such as 'OpenSSL' should be used.
+Summary: Implementation of a function 'digest()' for the creation  of hash digests of arbitrary
+R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash' and 'murmurhash'
+algorithms) permitting easy comparison of R language objects, as well as a function
+'hmac()' to create hash-based message authentication code. Please note that this
+package is not meant to be deployed for cryptographic purposes for which more comprehensive
+(and widely tested) libraries such as 'OpenSSL' should be used.
+
 
 
 
