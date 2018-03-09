@@ -1,4 +1,4 @@
-{% set version = "0.6.12" %}
+{% set version = "0.6.15" %}
 
 package:
   name: r-digest
@@ -9,7 +9,7 @@ source:
   url:
     - http://cran.r-project.org/src/contrib/digest_{{ version }}.tar.gz
     - http://cran.r-project.org/src/contrib/Archive/digest/digest_{{ version }}.tar.gz
-  sha256: a479463f120037ad8e88bb1387170842e635a1f07ce7e3575316efd6e14d9eab
+  sha256: 882e74bb4f0722260bd912fd7f8a0fcefcf44c558f43ac8a03d63e53d25444c5
 
 build:
   number: 0
