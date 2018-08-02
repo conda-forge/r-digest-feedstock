@@ -20,14 +20,16 @@ package is not meant to be deployed for cryptographic purposes for which more co
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-digest-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-digest-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-digest-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-digest-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-digest-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-digest-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-digest-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-digest-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-digest-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-digest-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-digest-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-digest-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-digest/badges/version.svg)](https://anaconda.org/conda-forge/r-digest)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-digest/badges/downloads.svg)](https://anaconda.org/conda-forge/r-digest)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--digest-green.svg)](https://anaconda.org/conda-forge/r-digest) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-digest.svg)](https://anaconda.org/conda-forge/r-digest) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-digest.svg)](https://anaconda.org/conda-forge/r-digest) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-digest.svg)](https://anaconda.org/conda-forge/r-digest) |
 
 Installing r-digest
 ===================
