@@ -1,43 +1,52 @@
-{% set version = "0.6.16" %}
+{% set version = '0.6.16' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-digest
-  version: {{ version }}
+  version: {{ version|replace("-", "_") }}
 
 source:
   fn: digest_{{ version }}.tar.gz
   url:
-    - http://cran.r-project.org/src/contrib/digest_{{ version }}.tar.gz
-    - http://cran.r-project.org/src/contrib/Archive/digest/digest_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/digest_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/digest/digest_{{ version }}.tar.gz
   sha256: 59193110d88038c07705749b4908e050a70975881725efe530eb42d96e2a1ad2
 
 build:
   merge_build_host: True  # [win]
-  number: 0
-  skip: True  # [win32]
-  script: R CMD INSTALL --build .
+  number: 1
+
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix  # [win64]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+
   host:
     - r-base
+
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - R -e "library('digest')"  # [not win]
-    - R -e \"library('digest')\"  # [win]
+    - $R -e "library('digest')"           # [not win]
+    - "\"%R%\" -e \"library('digest')\""  # [win]
 
 about:
   home: http://dirk.eddelbuettel.com/code/digest.html
-  license: GPL-2.0
+  license: GPL (>= 2)
   summary: |
     Implementation of a function 'digest()' for the creation  of hash digests of arbitrary
     R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash' and 'murmurhash'
@@ -45,10 +54,16 @@ about:
     'hmac()' to create hash-based message authentication code. Please note that this
     package is not meant to be deployed for cryptographic purposes for which more comprehensive
     (and widely tested) libraries such as 'OpenSSL' should be used.
+  license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
-    - ocefpaf
     - johanneskoester
     - bgruening
     - daler
+    - jdblischak
+    - cbrueffer
+    - ocefpaf
+    - dbast
