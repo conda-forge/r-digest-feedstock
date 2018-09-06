@@ -3,7 +3,7 @@ About r-digest
 
 Home: http://dirk.eddelbuettel.com/code/digest.html
 
-Package license: GPL-2.0
+Package license: GPL (>= 2)
 
 Feedstock license: BSD 3-Clause
 
