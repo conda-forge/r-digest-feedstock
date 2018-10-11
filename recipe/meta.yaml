@@ -1,5 +1,4 @@
-{% set version = '0.6.16' %}
-
+{% set version = '0.6.18' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -12,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/digest_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/digest/digest_{{ version }}.tar.gz
-  sha256: 59193110d88038c07705749b4908e050a70975881725efe530eb42d96e2a1ad2
+  sha256: 726de348dc41140cdc3c0111590e4824b03536ce36bf0ad93f1c798e32d8714c
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-
+  number: 0
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -31,10 +30,8 @@ requirements:
     - {{posix}}sed               # [win]
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
-
   host:
     - r-base
-
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
@@ -47,8 +44,7 @@ test:
 about:
   home: http://dirk.eddelbuettel.com/code/digest.html
   license: GPL (>= 2)
-  summary: |
-    Implementation of a function 'digest()' for the creation  of hash digests of arbitrary
+  summary: Implementation of a function 'digest()' for the creation  of hash digests of arbitrary
     R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash' and 'murmurhash'
     algorithms) permitting easy comparison of R language objects, as well as a function
     'hmac()' to create hash-based message authentication code. Please note that this
@@ -60,10 +56,10 @@ about:
 
 extra:
   recipe-maintainers:
+    - ocefpaf
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
     - cbrueffer
-    - ocefpaf
     - dbast
