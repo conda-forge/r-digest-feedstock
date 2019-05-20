@@ -1,4 +1,4 @@
-{% set version = '0.6.18' %}
+{% set version = '0.6.19' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,16 +7,14 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: digest_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/digest_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/digest/digest_{{ version }}.tar.gz
-  sha256: 726de348dc41140cdc3c0111590e4824b03536ce36bf0ad93f1c798e32d8714c
+  sha256: 28d159bd589ecbd01b8da0826eaed417f5c1bf5a11b79e76bf67ce8d935cccf4
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -24,6 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
     - {{native}}toolchain        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
@@ -45,20 +44,34 @@ about:
   home: http://dirk.eddelbuettel.com/code/digest.html
   license: GPL (>= 2)
   summary: Implementation of a function 'digest()' for the creation  of hash digests of arbitrary
-    R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash' and 'murmurhash'
-    algorithms) permitting easy comparison of R language objects, as well as a function
-    'hmac()' to create hash-based message authentication code. Please note that this
-    package is not meant to be deployed for cryptographic purposes for which more comprehensive
-    (and widely tested) libraries such as 'OpenSSL' should be used.
+    R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash', 'murmurhash'
+    and 'spookyhash' algorithms) permitting easy comparison of R language objects, as
+    well as functions such as'hmac()' to create hash-based message authentication code.
+    Please note that this package is not meant to be deployed for cryptographic purposes
+    for which more comprehensive (and widely tested) libraries such as 'OpenSSL' should
+    be used.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
     - ocefpaf
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+    - conda-forge/r
+
+# Package: digest
+# Author: Dirk Eddelbuettel <edd@debian.org> with contributions  by Antoine Lucas, Jarek Tuszynski, Henrik Bengtsson, Simon Urbanek, Mario Frasca, Bryan Lewis, Murray Stokely, Hannes Muehleisen, Duncan Murdoch, Jim Hester, Wush Wu, Qiang Kou, Thierry Onkelinx,  Michel Lang, Viliam Simko, Kurt Hornik, Radford Neal, and Kendon Bell.
+# Version: 0.6.19
+# Date: 2019-05-19
+# Maintainer: Dirk Eddelbuettel <edd@debian.org>
+# Title: Create Compact Hash Digests of R Objects
+# Description: Implementation of a function 'digest()' for the creation  of hash digests of arbitrary R objects (using the 'md5', 'sha-1', 'sha-256',  'crc32', 'xxhash', 'murmurhash' and 'spookyhash' algorithms) permitting easy comparison of R language objects, as well as functions such as'hmac()' to create hash-based message authentication code. Please note that this package is not meant to be deployed for cryptographic purposes for which more comprehensive (and widely tested) libraries such as 'OpenSSL' should be used.
+# URL: http://dirk.eddelbuettel.com/code/digest.html
+# BugReports: https://github.com/eddelbuettel/digest/issues
+# Depends: R (>= 3.1.0)
+# License: GPL (>= 2)
+# Suggests: knitr, rmarkdown
+# VignetteBuilder: knitr
+# NeedsCompilation: yes
+# Packaged: 2019-05-20 01:58:34.60752 UTC; edd
+# Repository: CRAN
+# Date/Publication: 2019-05-20 05:10:19 UTC
