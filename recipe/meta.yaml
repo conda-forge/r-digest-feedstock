@@ -21,6 +21,7 @@ build:
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('cxx') }}            # [not win]
@@ -43,7 +44,7 @@ test:
 
 about:
   home: http://dirk.eddelbuettel.com/code/digest.html
-  license: GPL-2
+  license: GPL-2.0-or-later
   summary: Implementation of a function 'digest()' for the creation of hash digests of arbitrary R objects (using the 'md5', 'sha-1', 'sha-256', 'crc32', 'xxhash', 'murmurhash' and 'spookyhash' algorithms) permitting easy comparison of R language objects, as well as functions such as'hmac()' to create hash-based message
     authentication code. Please note that this package is not meant to be deployed for cryptographic purposes for which more comprehensive (and widely tested) libraries such as 'OpenSSL' should be used.
   license_family: GPL2
@@ -52,8 +53,8 @@ about:
 
 extra:
   recipe-maintainers:
-    - ocefpaf
     - conda-forge/r
+    - ocefpaf
 
 # Package: digest
 # Author: Dirk Eddelbuettel <edd@debian.org> with contributions by Antoine Lucas, Jarek Tuszynski, Henrik Bengtsson, Simon Urbanek, Mario Frasca, Bryan Lewis, Murray Stokely, Hannes Muehleisen, Duncan Murdoch, Jim Hester, Wush Wu, Qiang Kou, Thierry Onkelinx, Michel Lang, Viliam Simko, Kurt Hornik, Radford Neal, Kendon Bell, and Matthew de Queljoe.
