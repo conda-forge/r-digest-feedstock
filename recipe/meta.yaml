@@ -1,4 +1,4 @@
-{% set version = "0.6.27" %}
+{% set version = "0.6.28" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/digest_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/digest/digest_{{ version }}.tar.gz
-  sha256: f485f75122907da24c41d4a62c91a232f0c371befd2f77e973342a1bef00253f
+  sha256: 4a328c75e95f8522fc07390d1dd00c19fb643f558e761a8aed04f99c1dc7db00
 
 build:
   merge_build_host: true  # [win]
